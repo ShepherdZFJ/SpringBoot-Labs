@@ -23,7 +23,7 @@ public class ScheduleConfiguration {
         public Trigger demoJob01Trigger() {
             // 简单的调度计划的构造器
             SimpleScheduleBuilder scheduleBuilder = SimpleScheduleBuilder.simpleSchedule()
-                    .withIntervalInSeconds(5) // 频率。
+                    .withIntervalInSeconds(30) // 频率。
                     .repeatForever(); // 次数。
             // Trigger 构造器
             return TriggerBuilder.newTrigger()
@@ -48,7 +48,7 @@ public class ScheduleConfiguration {
         @Bean
         public Trigger demoJob02Trigger() {
             // 简单的调度计划的构造器
-            CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0/10 * * * * ? *");
+            CronScheduleBuilder scheduleBuilder = CronScheduleBuilder.cronSchedule("0 0/1 * * * ? *");
             // Trigger 构造器
             return TriggerBuilder.newTrigger()
                     .forJob(demoJob02()) // 对应 Job 为 demoJob02
