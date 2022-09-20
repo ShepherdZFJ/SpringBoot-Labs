@@ -8,20 +8,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.quartz.QuartzJobBean;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @DisallowConcurrentExecution
-public class DemoJob01 extends QuartzJobBean {
+public class Job2 extends QuartzJobBean {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
+    private static SimpleDateFormat fullDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
-    @Autowired
-    private DemoService demoService;
 
     @Override
     protected void executeInternal(JobExecutionContext context) {
-        logger.info("[job1的执行了，时间: {}]", new Date());
+        logger.info("[job2的执行了，时间: {}]", fullDateFormat.format(new Date()));
     }
-
 }
